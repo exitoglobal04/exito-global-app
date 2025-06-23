@@ -10,10 +10,6 @@ const db = new sqlite3.Database('database.db');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/test', (req, res) => {
-  res.send('Servidor funcionando');
-});
-
 // Crear tabla de usuarios si no existe
 db.run(`
   CREATE TABLE IF NOT EXISTS usuarios (
@@ -41,6 +37,11 @@ app.post('/api/registrar', (req, res) => {
       res.status(200).json({ mensaje: 'Usuario registrado exitosamente', id_usuario: this.lastID });
     }
   );
+});
+
+// Ruta de prueba
+app.get('/test', (req, res) => {
+  res.send('Servidor funcionando');
 });
 
 // Iniciar el servidor
