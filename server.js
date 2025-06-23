@@ -10,6 +10,10 @@ const db = new sqlite3.Database('database.db');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/test', (req, res) => {
+  res.send('Servidor funcionando');
+});
+
 // Crear tabla de usuarios si no existe
 db.run(`
   CREATE TABLE IF NOT EXISTS usuarios (
